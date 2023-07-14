@@ -1,0 +1,5 @@
+<!-- Exemple d'une condition  avec *ngIf -->
+<!--<app-face-snap [faceSnap]="myFirstFaceSnap" *ngIf="myFirstFaceSnap.snaps > 0"></app-face-snap>-->
+
+<!-- Exemple d'une boucle avec *ngFor -->
+<app-face-snap *ngFor="let faceSnapeElement of faceSnapes" [faceSnap]="faceSnapeElement"></app-face-snap>
