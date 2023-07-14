@@ -7,6 +7,7 @@ import { FaceSnap } from "../models/face-snap.model";
 export class FaceSnapsService {
     faceSnapes: FaceSnap[] = [
         {
+            id: 1,
             title: 'Paysage',
             description: 'Un paysage de montagne',
             createdDate: new Date(),
@@ -16,6 +17,7 @@ export class FaceSnapsService {
             location: 'Alpes'
         },
         {
+            id: 2,
             title: 'Portrait',
             description: 'Un portrait de femme',
             createdDate: new Date(),
@@ -25,6 +27,7 @@ export class FaceSnapsService {
             location: 'Paris'
         },
         {
+            id: 3,
             title: 'Un oiseau',
             description: 'Une mésange',
             createdDate: new Date(),
@@ -33,6 +36,7 @@ export class FaceSnapsService {
             snapped: false
         },
         {
+            id: 4,
             title: 'Paysage',
             description: 'Un paysage de montagne',
             createdDate: new Date(),
@@ -42,6 +46,7 @@ export class FaceSnapsService {
             location: 'Alpes'
         },
         {
+            id: 5,
             title: 'Portrait',
             description: 'Un portrait de femme',
             createdDate: new Date(),
@@ -51,6 +56,7 @@ export class FaceSnapsService {
             location: 'Paris'
         },
         {
+            id: 6,
             title: 'Un oiseau',
             description: 'Une mésange',
             createdDate: new Date(),
@@ -59,4 +65,25 @@ export class FaceSnapsService {
             snapped: false
         }
     ];
+
+    getAllFaceSnaps(): FaceSnap[] {
+        return this.faceSnapes;
+    }
+
+    getFaceSnapById(id: number): FaceSnap {
+        const faceSnap = this.faceSnapes.find(
+            (faceSnap) => faceSnap.id === id
+        );
+        if (!faceSnap) {
+            throw new Error("FaceSnap not found");
+        } else {
+            return faceSnap;
+        }
+    }
+
+    snapFaceSnapById(id: number): void {
+        const faceSnap = this.getFaceSnapById(id);
+        faceSnap.snapped ? faceSnap.snaps-- : faceSnap.snaps++;
+        faceSnap.snapped = !faceSnap.snapped;
+    }
 }
